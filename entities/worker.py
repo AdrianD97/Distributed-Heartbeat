@@ -64,14 +64,14 @@ class Worker(Thread):
             if W == 0:
                 W = constants.W
 
-                lock = self.redisClient.setnx('lock', 1)
+                lock = self.redisClient.setnx('lock.fib', 1)
 
                 if lock == False:
                     continue
                 value = self.redisClient.get(constants.STRING_KEY)
                 new_value = round(int(value) * (1 + sqrt(5)) / 2.0, 0)
                 self.redisClient.set(constants.STRING_KEY, int(new_value))
-                self.redisClient.delete('lock')
+                self.redisClient.delete('lock.fib')
 
                 print("[Worker " + str(self.id) + "]: add next Fibonacci number " + str(new_value))
 
