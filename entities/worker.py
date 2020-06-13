@@ -44,8 +44,6 @@ class Worker(Thread):
         W = constants.W
         C = constants.C
         
-        live = 0.3
-        
         while True:
             min_val = min(T, W, C)
             sleep(min_val)
