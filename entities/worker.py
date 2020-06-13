@@ -80,6 +80,6 @@ class Worker(Thread):
             if C == 0:
                 C = constants.C
                 gone = random.randint(1, 10)
-                if gone <= 3:
+                if gone == 1:
                     print("[Worker " + str(self.id) + "]: crashed.")
                     return
